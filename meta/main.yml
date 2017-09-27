@@ -1,5 +1,5 @@
 galaxy_info:
-  author: AdopteUnOps
+  owner: AdopteUnOps
   description: install docker on ubuntu hosts
   license: Apache
 
