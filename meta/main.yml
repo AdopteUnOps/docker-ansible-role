@@ -1,2 +1,16 @@
-#dependencies:
+galaxy_info:
+  author: AdopteUnOps
+  description: install docker on ubuntu hosts
+  license: Apache
+
+  min_ansible_version: 2.2
+
+  platforms:
+   - name: Ubuntu
+
+  galaxy_tags:
+  - docker
+  - ubuntu
+
+dependencies: []
 #  - { role: lvm, disknames: "{{docker_disks}}", lvm_partitions: "{{docker_partitions}}", vg_name: "vg_docker", lv_name: "lv_docker", mount_point: "/var/lib/docker", when: use_docker_lvm}
