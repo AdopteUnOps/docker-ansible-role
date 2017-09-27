@@ -9,7 +9,9 @@
   become: yes
 
 - name: Install docker-py
-  apt: name=python-docker={{dockerpy_version}}
+  pip:
+    name: docker-py
+    version : "{{dockerpy_version}}"
   become: yes
 
 - name: Add docker apt repo
