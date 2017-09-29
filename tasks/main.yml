@@ -1,12 +1,18 @@
 ---
 - name: Unlock docker apt version
   dpkg_selections:
-    name: "{{ item }}"
+    name: "{{ docker_package_name }}"
     selection: install
-  with_items:
-  - "python-docker"
-  - "{{ docker_package_name }}"
   become: yes
+
+- name: Install gnupg-curl and python pip
+  apt:
+    name: "{{item}}"
+    force: yes
+  become: yes
+  with_items:
+  - gnupg-curl #required for for apt-key https support
+  - python-pip
 
 - name: Install docker-py
   pip:
@@ -19,12 +25,6 @@
     repo: 'deb {{docker_repository_url}} {{ ansible_distribution_release }} edge'
     mode: 644
     state: present
-  become: yes
-
-- name: Install gnupg-curl for apt-key https support
-  apt:
-    name: gnupg-curl
-    force: yes
   become: yes
 
 - name: Import the Docker repository key
@@ -58,11 +58,8 @@
 
 - name: Lock docker apt version
   dpkg_selections:
-    name: "{{ item }}"
+    name: "{{ docker_package_name }}"
     selection: hold
-  with_items:
-  - "python-docker"
-  - "{{ docker_package_name }}"
   become: yes
 
 - name: Create systemctl structure for docker
