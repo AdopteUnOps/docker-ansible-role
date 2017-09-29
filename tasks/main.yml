@@ -3,6 +3,7 @@
   dpkg_selections:
     name: "{{ docker_package_name }}"
     selection: install
+  changed_when: false
   become: yes
 
 - name: Install gnupg-curl and python pip
@@ -37,6 +38,7 @@
 
 - name: update apt cache
   apt: update_cache=yes
+  changed_when: false
   become: yes
 
 - name: Install Docker package
@@ -60,6 +62,7 @@
   dpkg_selections:
     name: "{{ docker_package_name }}"
     selection: hold
+  changed_when: false    
   become: yes
 
 - name: Create systemctl structure for docker
