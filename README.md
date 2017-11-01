@@ -19,8 +19,21 @@ docker_repository_category: edge
 #this should be overrided only in case of downgrade of docker version
 docker_force_version: no
 
-#override this is you need use default ssl port
-docker_registry_openssl_url: "{{ docker_registry }}"
+docker_registries: []
+```
+
+Registries  Examples
+----------
+```
+docker_registries:
+  # no certificate is required for docker hub
+  - url: index.docker.io
+  # if you have the ca certificate
+  - url: my.custom.registry
+    certificate: path/to/ca.crt of the registry
+  # if you want ansible to fetch the certificate from the registry itself with openssl
+  - url: my.custom.registry
+    port: 443
 ```
 License
 -------

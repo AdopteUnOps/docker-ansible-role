@@ -62,7 +62,7 @@
   dpkg_selections:
     name: "{{ docker_package_name }}"
     selection: hold
-  changed_when: false    
+  changed_when: false
   become: yes
 
 - name: Create systemctl structure for docker
@@ -80,13 +80,21 @@
   become: yes
 
 - name: Create registry certificate folder
-  file: path=/etc/docker/certs.d/{{ docker_registry }}/ state=directory
+  file: path=/etc/docker/certs.d/{{ item.url }}/ state=directory
   become: yes
-  when: docker_registry is defined
+  when: item.url != "index.docker.io"
+  with_items: "{{ docker_registries }}"
+
+- name: Install registry certificate
+  copy:
+    src: "{{item.certificate}}"
+    dest: "/etc/docker/certs.d/{{ item.url }}/ca.crt"
+  when: item.url != "index.docker.io" and item.certificate is defined
+  with_items: "{{ docker_registries }}"
 
 - name: Grab registry certificate
-  shell: "echo |  openssl s_client -connect {{ docker_registry_openssl_url }} 2>/dev/null | openssl x509 -text > /etc/docker/certs.d/{{ docker_registry }}/ca.crt"
-  become: yes
-  when: docker_registry is defined
+  shell: "echo |  openssl s_client -connect {{ item.url }}:{{item.port}} 2>/dev/null | openssl x509 -text > /etc/docker/certs.d/{{ item.url }}/ca.crt"
+  when: item.url != "index.docker.io" and item.port is defined
+  with_items: "{{ docker_registries }}"
 
 - meta: flush_handlers

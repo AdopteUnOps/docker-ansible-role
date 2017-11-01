@@ -11,5 +11,4 @@ docker_repository_category: edge
 #this should be overrided only in case of downgrade of docker version
 docker_force_version: no
 
-#override this is you need use default ssl port
-docker_registry_openssl_url: "{{ docker_registry }}"
+docker_registries: []
