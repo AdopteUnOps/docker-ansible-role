@@ -48,6 +48,12 @@
   become: yes
   notify: Restart docker
 
+- name: Install Docker-compose package
+  apt:
+    name: "{{ docker_compose_package_name }}={{ docker_compose_version }}"
+    force: "{{ docker_force_version }}"
+  become: yes
+  
 - name: Configure Docker bridge MTU
   copy:
     dest: /etc/docker/daemon.json
