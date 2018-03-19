@@ -8,8 +8,10 @@ Role Variables
 
 ```
 docker_package_name: docker-ce
-docker_version: 17.06.2~ce-0~ubuntu
-dockerpy_version: 1.8.0-*
+docker_version: 18.02.0~ce-0~ubuntu
+docker_compose_package_name: docker-compose
+docker_compose_version: 1.8.0-2~16.04.1
+dockerpy_version: 1.10.6
 docker_disks: /dev/sdb
 docker_partitions: /dev/sdb1
 docker_opts: "--log-opt max-size=50m --log-opt max-file=2"
