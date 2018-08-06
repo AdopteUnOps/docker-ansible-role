@@ -12,7 +12,7 @@
     force: yes
   become: yes
   with_items:
-  - {{curl_package}} #required for for apt-key https support
+  - "{{curl_package}}" #required for for apt-key https support
   - python-pip
 
 - name: Install docker-py
