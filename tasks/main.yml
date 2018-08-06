@@ -12,7 +12,7 @@
     force: yes
   become: yes
   with_items:
-  - gnupg-curl #required for for apt-key https support
+  - {{curl_package}} #required for for apt-key https support
   - python-pip
 
 - name: Install docker-py
@@ -21,19 +21,19 @@
     version : "{{dockerpy_version}}"
   become: yes
 
-- name: Add docker apt repo
-  apt_repository:
-    repo: 'deb {{docker_repository_url}} {{ ansible_distribution_release }} edge'
-    mode: 644
-    state: present
-  become: yes
-
 - name: Import the Docker repository key
   apt_key:
     data: "{{lookup('file', 'docker.gpg')}}"
     id: F273FCD8
     state: present
     validate_certs: no
+  become: yes
+
+- name: Add docker apt repo
+  apt_repository:
+    repo: 'deb {{docker_repository_url}} {{ ansible_distribution_release }} edge'
+    mode: 644
+    state: present
   become: yes
 
 - name: update apt cache
