@@ -1,6 +1,6 @@
 ---
 docker_package_name: docker-ce
-docker_version: 18.02.0~ce-0~ubuntu
+docker_version: 18.06.0ce3-0~ubuntu
 dockerpy_version: 1.10.6
 docker_disks: /dev/sdb
 docker_partitions: /dev/sdb1

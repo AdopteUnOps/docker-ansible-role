@@ -1,14 +1,23 @@
 # docker-ansible-role
 
 Ansible role to install docker.
-Only runs on ubuntu based machines
+Only runs on ubuntu based machines.
+
+Docker version
+--------------
+Default docker version is for Ubuntu 18.04 verison.
+If you want to get this role working on ubuntu 16.04 you may override docker_version variable to an older version :
+
+```
+docker_version: "18.02.0~ce-0~ubuntu"
+```
 
 Role Variables
 --------------
 
 ```
 docker_package_name: docker-ce
-docker_version: 18.02.0~ce-0~ubuntu
+docker_version: 18.06.0ce3-0~ubuntu
 dockerpy_version: 1.10.6
 docker_disks: /dev/sdb
 docker_partitions: /dev/sdb1
@@ -35,6 +44,7 @@ docker_registries:
   - url: my.custom.registry
     port: 443
 ```
+
 License
 -------
 
