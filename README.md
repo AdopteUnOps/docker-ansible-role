@@ -5,7 +5,7 @@ Only runs on ubuntu based machines.
 
 Docker version
 --------------
-Default docker version is for Ubuntu 18.04 verison.
+Default docker version is for Ubuntu 18.04 version.
 If you want to get this role working on ubuntu 16.04 you may override docker_version variable to an older version :
 
 ```
