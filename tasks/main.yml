@@ -66,8 +66,36 @@
   become: yes
 
 - name: Create systemctl structure for docker
-  file: path=/etc/systemd/system/docker.service.d state=directory
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
   become: yes
+
+- name: Make docker configurable via systemd
+  copy:
+    src: docker.service.conf
+    dest: /etc/systemd/system/docker.service.d/docker.conf
+    mode: 0644
+    owner: root
+    group: root
+    backup: yes
+  become: true
+  notify:
+  - Reload systemctl
+  - Restart docker
+
+- name: Configure /etc/default/docker
+  template:
+    src: docker.default.conf
+    dest: /etc/default/docker
+    mode: 0644
+    owner: root
+    group: root
+    backup: yes
+  become: true
+  notify:
+  - Reload systemctl
+  - Restart docker
 
 - name: Create a docker group
   group:
