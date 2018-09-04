@@ -6,7 +6,7 @@
   changed_when: false
   become: yes
 
-- name: Install gnupg-curl and python pip
+- name: Install gnupg and python pip
   apt:
     name: "{{item}}"
     force: yes
