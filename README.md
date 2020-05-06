@@ -26,7 +26,7 @@ use_docker_lvm: true
 docker_repository_url: https://download.docker.com/linux/ubuntu/
 docker_repository_category: edge
 docker_opts: ""
-#this should be overrided only in case of downgrade of docker version
+#this should be overriden only in case of downgrade of docker version
 docker_force_version: no
 
 docker_registries: []
