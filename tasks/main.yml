@@ -15,7 +15,7 @@
   - gnupg #required for for apt-key https support
   - python3-pip
 
-- name: Install docker
+- name: Install docker-py
   pip:
     executable: pip3
     name: docker
