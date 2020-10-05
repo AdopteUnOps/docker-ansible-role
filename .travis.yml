@@ -22,7 +22,6 @@ install:
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 script:
   # Check the role/playbook's syntax.
-  - ansible --version | grep "python version"
   - ansible-playbook -i tests/inventory tests/test.yml --syntax-check 
   # Run the role/playbook with ansible-playbook.
   # dry run doesn't work on travis side
