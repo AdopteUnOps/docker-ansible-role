@@ -23,10 +23,10 @@ install:
 script:
   # Check the role/playbook's syntax.
   - ansible --version | grep "python version"
-  - ansible-playbook -i tests/inventory tests/test.yml -e docker_version="5:19.03.9~3-0~ubuntu-xenial" --syntax-check 
+  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check 
   # Run the role/playbook with ansible-playbook.
   # dry run as we're not able to install this on travis side
-  - ansible-playbook -i tests/inventory tests/test.yml -e docker_version="5:19.03.9~3-0~ubuntu-xenial" --connection=local -b --check
+  - ansible-playbook -i tests/inventory tests/test.yml -e docker_version="18.04.0~ce~3-0~ubuntu" --connection=local -b --check
   # Run the role/playbook again, checking to make sure it's idempotent.
   #- >
   #  ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
