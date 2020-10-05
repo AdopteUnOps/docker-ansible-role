@@ -44,7 +44,7 @@
 
 - name: Install Docker package
   apt:
-    name: "{{ item }}
+    name: "{{ item }}"
     force: "{{ docker_force_version }}"
   become: yes
   notify: Restart docker
