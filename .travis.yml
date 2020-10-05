@@ -21,10 +21,11 @@ install:
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 script:
   # Check the role/playbook's syntax.
-  - ansible-playbook -i tests/inventory tests/test.yml -e docker_version="18.02.0~ce-0~ubuntu" --syntax-check
+  - python3 ansible --version | grep "python version"
+  - python3 ansible-playbook -i tests/inventory tests/test.yml -e docker_version="18.02.0~ce-0~ubuntu" --syntax-check
   # Run the role/playbook with ansible-playbook.
   # dry run as we're not able to install this on travis side
-  - ansible-playbook -i tests/inventory tests/test.yml -e docker_version="18.02.0~ce-0~ubuntu" --connection=local -b --check
+  - python3 ansible-playbook -i tests/inventory tests/test.yml -e docker_version="18.02.0~ce-0~ubuntu" --connection=local -b --check
   # Run the role/playbook again, checking to make sure it's idempotent.
   #- >
   #  ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
