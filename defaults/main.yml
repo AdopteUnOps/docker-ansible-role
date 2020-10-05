@@ -1,7 +1,7 @@
 ---
 ansible_python_interpreter: "/usr/bin/python3"
 docker_package_name: docker-ce
-docker_version: 19.03.6~3-0~ubuntu
+docker_version: 19.03.6~3-0~ubuntu-xenial
 dockerpy_version: 4.2.0
 docker_disks: /dev/sdb
 docker_partitions: /dev/sdb1
