@@ -44,10 +44,13 @@
 
 - name: Install Docker package
   apt:
-    name: "{{ docker_package_name }}={{ docker_version }}"
+    name: "{{ item }}
     force: "{{ docker_force_version }}"
   become: yes
   notify: Restart docker
+  with_items:
+  - "docker-ce={{ docker_version }}"
+  - "docker-ce-cli={{ docker_version }}"
 
 - name: Configure Docker bridge MTU
   copy:
