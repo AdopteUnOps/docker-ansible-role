@@ -6,18 +6,19 @@
   changed_when: false
   become: yes
 
-- name: Install gnupg and python pip
+- name: Install gnupg and python3 pip
   apt:
     name: "{{item}}"
     force: yes
   become: yes
   with_items:
   - gnupg #required for for apt-key https support
-  - python-pip
+  - python3-pip
 
 - name: Install docker-py
   pip:
-    name: docker-py
+    executable: pip3
+    name: docker
     version : "{{dockerpy_version}}"
   become: yes
 
