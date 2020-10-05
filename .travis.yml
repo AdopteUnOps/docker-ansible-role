@@ -14,7 +14,7 @@ env:
   - ANSIBLE_VERSION=2.1.0.0
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install python3 
+  - sudo apt-get install python3 python3-pip
 
 install:
   # Install Ansible.
