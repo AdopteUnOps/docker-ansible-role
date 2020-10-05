@@ -50,7 +50,6 @@
   notify: Restart docker
   with_items:
   - "docker-ce={{ docker_version }}"
-  - "docker-ce-cli={{ docker_version }}"
 
 - name: Configure Docker bridge MTU
   copy:
